@@ -103,10 +103,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['edit_user_id'], $_POS
     $current_role = $stmt->fetchColumn();
 
     if ($current_role === 'مدیر پروژه' && $edit_user_id == $current_user_id) {
-        // مدیر خودش نمی‌تونه نقش مدیر خودش رو تغییر بده
+        
         $error = "شما نمی‌توانید نقش مدیر پروژه خودتان را تغییر دهید.";
     } elseif ($current_role === 'مدیر پروژه' && $edit_user_id != $current_user_id) {
-        // فقط مدیر اصلی اجازه تغییر نقش مدیران دیگه رو داره
+        
         if ($current_user_global_role !== 'مدیر پروژه') {
             $error = "نقش مدیر پروژه فقط توسط مدیر اصلی قابل تغییر است.";
         } elseif (!in_array($new_role, $valid_roles)) {
@@ -172,11 +172,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['edit_user_id'], $_POS
                         <?php
                         $can_edit = false;
                         if ($current_user_global_role === 'مدیر پروژه') {
-                            $can_edit = true; // مدیر پروژه می‌تونه نقش همه رو تغییر بده
+                            $can_edit = true; 
                         }
 
                         if ($member['role'] === 'مدیر پروژه' && $member['id'] != $current_user_id) {
-                            // نمایش فرم برای مدیرهای دیگه، کنترل تغییر در سرور انجام میشه
+                            
                             $can_edit = true;
                         }
 

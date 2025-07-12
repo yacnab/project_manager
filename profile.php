@@ -71,7 +71,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $stmt->execute([$hashed_password, $user['id']]);
         }
 
-        // آپدیت کامل اطلاعات سشن
+        
         $_SESSION['user']['mobile'] = $mobile;
         $_SESSION['user']['first_name'] = $first_name;
         $_SESSION['user']['last_name'] = $last_name;

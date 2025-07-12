@@ -1,6 +1,6 @@
 <?php
 require 'config/db.php';
-require 'auth.php'; // پیشنهاد: فایل auth.php بساز که فقط سشن رو چک کنه، ساده‌تر میشه
+require 'auth.php'; 
 
 $user_mobile = $_SESSION['user']['mobile'] ?? '';
 $user_role = $_SESSION['user']['role'] ?? '';
@@ -11,7 +11,7 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
 if (!$user) die("کاربر یافت نشد.");
 $user_id = $user['id'];
 
-// فقط پروژه‌هایی که کاربر توش عضوه یا خودش مدیره
+
 $stmt = $conn->prepare("
     SELECT DISTINCT p.*
     FROM projects p
@@ -26,7 +26,7 @@ $stmt->execute([
 ]);
 $projects = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-// نقش کاربر در هر پروژه
+
 $stmt2 = $conn->prepare("SELECT project_id, role FROM project_members WHERE user_id = ?");
 $stmt2->execute([$user_id]);
 $roles = $stmt2->fetchAll(PDO::FETCH_KEY_PAIR);

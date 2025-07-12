@@ -31,7 +31,7 @@ if (isset($_POST['create'])) {
     }
 
     if ($assigned_to) {
-        // بررسی اینکه این شماره موبایل، عضو پروژه‌ای هست که این برد متعلق بهشه
+        
         $stmt = $conn->prepare("
             SELECT u.id
             FROM users u
@@ -52,7 +52,7 @@ if (isset($_POST['create'])) {
     }
 }
 
-// گرفتن اعضای پروژه مربوط به این برد
+
 $stmt = $conn->prepare("
     SELECT u.mobile, u.first_name, u.last_name
     FROM users u
